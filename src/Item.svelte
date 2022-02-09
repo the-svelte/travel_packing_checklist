@@ -4,12 +4,10 @@
   export let item;
 
   let editing = false;
-
-  
 </script>
 
 <li class="list-group-item">
-  <div class="d-flex justify-content-between">
+  <div class="d-flex align-items-center justify-content-between ">
     <div class="form-check">
       <input
         class="form-check-input"
@@ -27,8 +25,7 @@
         />
       {:else}
         <label
-          class:decoration={item.packed}
-          class="form-check-label"
+          class="form-check-label {item.packed && 'text-decoration-line-through'}"
           for="flexCheckDefault"
           on:click={() => editing = true}
         >{item.name}</label>
@@ -38,7 +35,7 @@
       <button
         type="button"
         class="btn btn-primary btn-sm"
-      >Confirm identity</button>
+      >Delete</button>
     </div>
   </div>
 </li>
