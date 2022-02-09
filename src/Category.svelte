@@ -35,53 +35,55 @@
   }
 </script>
 
-<section>
-  <div class="d-flex justify-content-between align-items-center h4">
-    {#if editing}
-      <form>
-        <input
-          type="text"
-          class="form-control"
-          autofocus
-          bind:value={category.name}
-          on:blur={() => editing = false}
-          on:keypress={blurOnKey}
-        />
-      </form>
-    {:else}
-      <span
-        on:click={() => editing = true}
-      >{category.name}</span>
-    {/if}
-    <small class="text-muted">{status}</small>
-    <button class="btn btn-danger">Del</button>
-  </div>
-
-  <form class="my-3" on:submit|preventDefault={addItem}>
-    <div class="input-group mb-3">
-      <div class="form-floating flex-grow-1">
-        <input
-          type="text"
-          class="form-control"
-          id="floatingItem"
-          placeholder="Niew Item"
-          bind:value={itemName}>
-        <label for="floatingItem">New Item</label>
-      </div>
-      <button
-        class="btn btn-outline-secondary"
-        type="submit"
-        id="button-addon2"
-        disabled={!itemName}
-      >Enter</button>
+<div class="card mb-4">
+  <div class="card-header">
+    <div class="d-flex justify-content-between align-items-center h6 mb-0">
+      {#if editing}
+        <form>
+          <input
+            type="text"
+            class="form-control"
+            autofocus
+            bind:value={category.name}
+            on:blur={() => editing = false}
+            on:keypress={blurOnKey}
+          />
+        </form>
+      {:else}
+        <span
+          on:click={() => editing = true}
+        >{category.name}</span>
+      {/if}
+      <small class="text-muted">{status}</small>
+      <button class="btn btn-outline-danger btn-sm">Del</button>
     </div>
-  </form>
-
-  <ul class="list-group">
+  </div>
+  <div class="card-body">
+    <form on:submit|preventDefault={addItem}>
+      <div class="input-group">
+        <div class="form-floating flex-grow-1">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingItem"
+            placeholder="Niew Item"
+            bind:value={itemName}>
+          <label for="floatingItem">New Item</label>
+        </div>
+        <button
+          class="btn btn-outline-secondary"
+          type="submit"
+          id="button-addon2"
+          disabled={!itemName}
+        >Enter</button>
+      </div>
+    </form>
+  </div>
+  <ul class="list-group list-group-flush">
     {#each itemsToShow as item (item.id)}
       <Item bind:item />
     {:else}
       <div>This category does not contain any items yet.</div>
     {/each}
   </ul>
-</section>
+</div>

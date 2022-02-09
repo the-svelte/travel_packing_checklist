@@ -1,4 +1,5 @@
 <script>
+  import IconXSquare from './icons/IconXSquare.svelte';
   import {blurOnKey} from './util';
 
   // { id: string, name: string, packed: boolean }
@@ -38,8 +39,8 @@
     <div class="">
       <button
         type="button"
-        class="btn btn-outline-secondary btn-sm"
-      >Delete</button>
+        class="btn btn-sm text-muted"
+      ><IconXSquare/></button>
     </div>
   </div>
 </li>

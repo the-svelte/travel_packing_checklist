@@ -2,11 +2,9 @@
   import Category from './Category.svelte';
   import {getGuid, sortOnName} from './util';
 
-  export let categories;
-
+  let categories = {};
   let categoryArray = [];
   let categoryName = '';
-  let message = '';
   let show = 'all';
 
   $: categoryArray = sortOnName(Object.values(categories));
@@ -51,21 +49,21 @@
     </form>
     <p>Suggested categories include Backpack, Clothes,<br>Last minute, Medicines, Running Gear, and Toiletries.</p>
     <div class="d-flex justify-content-between align-items-center mb-3">
-      <div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="show" id="inlineRadio1" bind:group={show} value="all">
-          <label class="form-check-label" for="inlineRadio1">All</label>
+      <div class="d-flex flex-column flex-sm-row">
+        <div class="form-check me-3">
+          <input class="form-check-input" type="radio" name="show" id="" bind:group={show} value="all">
+          <label class="form-check-label" for="">All</label>
         </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="show" id="inlineRadio2" bind:group={show} value="packed">
-          <label class="form-check-label" for="inlineRadio2">Packed</label>
+        <div class="form-check me-3">
+          <input class="form-check-input" type="radio" name="show" id="" bind:group={show} value="packed">
+          <label class="form-check-label" for="">Packed</label>
         </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="show" id="inlineRadio3" bind:group={show} value="unpacked">
-          <label class="form-check-label" for="inlineRadio3">Unpacked</label>
+        <div class="form-check me-3">
+          <input class="form-check-input" type="radio" name="show" id="" bind:group={show} value="unpacked">
+          <label class="form-check-label" for="">Unpacked</label>
         </div>
       </div>
-      <button class="btn btn-secondary btn-sm" on:click={clearAllChecks}>Clear All checks</button>
+      <button class="btn btn-secondary btn-sm" on:click={clearAllChecks}>Clear All Checks</button>
     </div>
   </header>
 
