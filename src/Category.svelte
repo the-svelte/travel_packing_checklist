@@ -37,11 +37,16 @@
 <section>
   <div class="d-flex justify-content-between align-items-center h4">
     {#if editing}
-      <input
-        bind:value={category.name}
-        on:blur={() => editing = false}
-        on:keypress={blurOnKey}
-      />
+      <form>
+        <input
+          type="text"
+          class="form-control"
+          autofocus
+          bind:value={category.name}
+          on:blur={() => editing = false}
+          on:keypress={blurOnKey}
+        />
+      </form>
     {:else}
       <span
         on:click={() => editing = true}
@@ -52,31 +57,49 @@
   </div>
 
   <form
-    class="row row-cols-lg-auto g-3 align-items-center"
+    class="my-3"
     on:submit|preventDefault={addItem}
   >
-    <div class="col-auto">
-      <label
-        for="exampleInputEmail1"
-        class="visually-hidden form-label-"
-      >New Item</label>
-      <input
-        type="text"
-        class="form-control"
-        id="exampleInputEmail1"
-        bind:value={itemName}
-      />
+    <div class="input-group mb-3">
+      <div class="form-floating flex-grow-1">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingItem"
+          placeholder="Niew Item"
+          bind:value={itemName}>
+        <label for="floatingItem">New Item</label>
+      </div>
+      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Enter</button>
     </div>
-    <div class="col-auto">
+
+
+    <!-- <div class="col"> -->
+      <!-- <div class="row">
+        <label
+        for="exampleInputEmail1"
+        class="col-sm-3 col-form-label"
+        >New Item</label>
+        <div class="col-sm-9">
+          <input
+          type="text"
+          class="form-control"
+          id="exampleInputEmail1"
+          bind:value={itemName}
+          />
+        </div>
+      </div> -->
+    <!-- </div> -->
+    <!-- <div class="col">
       <button
         type="submit"
         class="btn btn-primary"
         disabled={!itemName}
       >Add Item</button>
-    </div>
+    </div> -->
   </form>
 
-  <ul>
+  <ul class="list-group">
     {#each itemsToShow as item (item.id)}
       <Item bind:item />
     {:else}

@@ -7,26 +7,29 @@
 </script>
 
 <li class="list-group-item">
-  <div class="d-flex align-items-center justify-content-between ">
-    <div class="form-check">
+  <div class="d-flex align-items-center justify-content-between">
+    <div class="">
       <input
         class="form-check-input"
         type="checkbox"
-        value=""
-        id="flexCheckDefault"
+        id=""
         bind:checked={item.packed}
       >
+    </div>
+    <div class="flex-grow-1 px-4">
       {#if editing}
         <input
-          class="form-input"
+          type="text"
+          class="form-control form-control-sm"
+          autofocus
           bind:value={item.name}
           on:blur={() => editing = false}
           on:keydown={blurOnKey}
         />
       {:else}
         <label
-          class="form-check-label {item.packed && 'text-decoration-line-through'}"
-          for="flexCheckDefault"
+          class="{item.packed && 'text-decoration-line-through'}"
+          for=""
           on:click={() => editing = true}
         >{item.name}</label>
       {/if}
@@ -34,7 +37,7 @@
     <div class="">
       <button
         type="button"
-        class="btn btn-primary btn-sm"
+        class="btn btn-outline-secondary btn-sm"
       >Delete</button>
     </div>
   </div>

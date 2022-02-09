@@ -11,8 +11,19 @@ import Category from './Category.svelte';
     </div> -->
   </div>
   <div class="row justify-content-center">
-    <div class="col-sm-6 col-xl-3 pt-4">
-      <Category category={{id: 'xxx', name: 'House work', items: {}}} show={'all'}/>
+    <div class="col-sm-5 col-xl-3 pt-4">
+      <Category
+        category={{
+          id: 'xxx',
+          name: 'House work',
+          items: {
+            aaa: { id: 'aaa', name: 'Dish' },
+            bbb: { id: 'bbb', name: 'Wash' },
+            ccc: { id: 'ccc', name: 'Clean' },
+          },
+        }}
+        show={'all'}
+      />
     </div>
   </div>
 </section>
