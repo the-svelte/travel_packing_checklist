@@ -5,11 +5,21 @@
   let categories = {};
   let categoryArray = [];
   let categoryName = '';
+  let message = '';
   let show = 'all';
 
   $: categoryArray = sortOnName(Object.values(categories));
 
   function addCategory() {
+    const duplicate = Object.values(categories).some(
+      cat => cat.name === categoryName
+    );
+    if (duplicate) {
+      message = `The Category "${categoryName}" already exists.`;
+      alert(message);
+      return;
+    }
+
     const id = getGuid();
     categories[id] = { id, name: categoryName, items: {}};
     categories = categories;
@@ -69,7 +79,7 @@
 
   <div>
     {#each categoryArray as category (category.id)}
-      <Category {category} {show} />
+      <Category {category} {categories} {show} />
     {/each}
   </div>
 </section>

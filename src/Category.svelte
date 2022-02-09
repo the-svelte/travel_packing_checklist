@@ -2,7 +2,7 @@
   import Item from './Item.svelte';
   import {getGuid, blurOnKey, sortOnName} from './util';
 
-  // export let categories;
+  export let categories;
   // { id: string, name: string, items: { [id string]: Item }}
   export let category;
   export let show;
@@ -19,6 +19,15 @@
   $: itemsToShow = sortOnName(items.filter(i => shouldShow(show, i)));
 
   function addItem() {
+    const duplicate = Object.values(categories).some(
+      cat => Object.values(cat.items).some(item => item.name === itemName)
+    );
+    if (duplicate) {
+      message = `The Item "${itemName}" aleady exists.`;
+      alert(message);
+      return;
+    }
+
     const {items} = category;
     const id = getGuid();
     items[id] = { id, name: itemName, packed: false };
