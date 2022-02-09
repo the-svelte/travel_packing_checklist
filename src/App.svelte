@@ -1,6 +1,27 @@
 <script>
 import Login from './Login.svelte';
-import Category from './Category.svelte';
+import CheckList from './CheckList.svelte';
+
+const categories = {
+  'xxx': {
+    id: 'xxx',
+    name: 'House work',
+    items: {
+      aaa: { id: 'xxx-aaa', name: 'Dish' },
+      bbb: { id: 'xxx-bbb', name: 'Wash' },
+      ccc: { id: 'xxx-ccc', name: 'Clean' },
+    },
+  },
+  'yyy': {
+    id: 'yyy',
+    name: 'Office work',
+    items: {
+      aaa: { id: 'yyy-aaa', name: 'React' },
+      bbb: { id: 'yyy-bbb', name: 'Vue.js' },
+      ccc: { id: 'yyy-ccc', name: 'Svelte' },
+    },
+  },
+};
 </script>
 
 <section class="container-fluid">
@@ -12,17 +33,8 @@ import Category from './Category.svelte';
   </div>
   <div class="row justify-content-center">
     <div class="col-sm-5 col-xl-3 pt-4">
-      <Category
-        category={{
-          id: 'xxx',
-          name: 'House work',
-          items: {
-            aaa: { id: 'aaa', name: 'Dish' },
-            bbb: { id: 'bbb', name: 'Wash' },
-            ccc: { id: 'ccc', name: 'Clean' },
-          },
-        }}
-        show={'all'}
+      <CheckList
+        categories={categories}
       />
     </div>
   </div>

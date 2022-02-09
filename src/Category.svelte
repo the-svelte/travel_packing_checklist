@@ -57,10 +57,7 @@
     <button class="btn btn-danger">Del</button>
   </div>
 
-  <form
-    class="my-3"
-    on:submit|preventDefault={addItem}
-  >
+  <form class="my-3" on:submit|preventDefault={addItem}>
     <div class="input-group mb-3">
       <div class="form-floating flex-grow-1">
         <input
@@ -71,33 +68,13 @@
           bind:value={itemName}>
         <label for="floatingItem">New Item</label>
       </div>
-      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Enter</button>
-    </div>
-
-
-    <!-- <div class="col"> -->
-      <!-- <div class="row">
-        <label
-        for="exampleInputEmail1"
-        class="col-sm-3 col-form-label"
-        >New Item</label>
-        <div class="col-sm-9">
-          <input
-          type="text"
-          class="form-control"
-          id="exampleInputEmail1"
-          bind:value={itemName}
-          />
-        </div>
-      </div> -->
-    <!-- </div> -->
-    <!-- <div class="col">
       <button
+        class="btn btn-outline-secondary"
         type="submit"
-        class="btn btn-primary"
+        id="button-addon2"
         disabled={!itemName}
-      >Add Item</button>
-    </div> -->
+      >Enter</button>
+    </div>
   </form>
 
   <ul class="list-group">
