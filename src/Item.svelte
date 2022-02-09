@@ -20,10 +20,11 @@
     </div>
     <div class="flex-grow-1 px-4">
       {#if editing}
+        <!-- A11y: Avoid using autofocus -->
         <input
+          autofocus
           type="text"
           class="form-control form-control-sm"
-          autofocus
           bind:value={item.name}
           on:blur={() => editing = false}
           on:keydown={blurOnKey}
