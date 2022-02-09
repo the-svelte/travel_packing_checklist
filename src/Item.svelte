@@ -1,6 +1,7 @@
 <script>
   import {blurOnKey} from './util';
 
+  // { id: string, name: string, packed: boolean }
   export let item;
 
   let editing = false;
@@ -28,7 +29,7 @@
         />
       {:else}
         <label
-          class="{item.packed && 'text-decoration-line-through'}"
+          class="{item.packed ? 'text-decoration-line-through' : ''}"
           for=""
           on:click={() => editing = true}
         >{item.name}</label>

@@ -3,6 +3,7 @@
   import {getGuid, blurOnKey, sortOnName} from './util';
 
   // export let categories;
+  // { id: string, name: string, items: { [id string]: Item }}
   export let category;
   export let show;
 
@@ -27,9 +28,9 @@
 
   function shouldShow(show, item) {
     return (
-      show === 'all' ||
-      (show === 'packed' && item.packed) ||
-      (show === 'unpacked' && !item.packed)
+      show === 'all'
+      || (show === 'packed' && item.packed)
+      || (show === 'unpacked' && !item.packed)
     );
   }
 </script>
