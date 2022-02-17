@@ -42,6 +42,22 @@
     delete categories[category.id];
     categories = categories;
   }
+
+  restore();
+
+  $: if (categories) persist();
+
+  function persist() {
+    const text = JSON.stringify(categories);
+    localStorage.setItem('travel-packing', text);
+  }
+
+  function restore() {
+    const text = localStorage.getItem('travel-packing');
+    if (text && text !== '{}') {
+      categories = JSON.parse(text);
+    }
+  }
 </script>
 
 <section>
@@ -94,6 +110,7 @@
     {#each categoryArray as category (category.id)}
       <Category {category} {categories} {show}
         on:delete={() => deleteCategory(category)}
+        on:persist={persist}
       />
     {/each}
   </div>
