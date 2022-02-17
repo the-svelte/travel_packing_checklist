@@ -1,6 +1,9 @@
 <script>
   import IconXSquare from './icons/IconXSquare.svelte';
   import {blurOnKey} from './util';
+  import {createEventDispatcher} from 'svelte';
+
+  const dispatch = createEventDispatcher();
 
   // { id: string, name: string, packed: boolean }
   export let item;
@@ -41,6 +44,7 @@
       <button
         type="button"
         class="btn btn-sm text-muted"
+        on:click={() => dispatch('delete')}
       ><IconXSquare/></button>
     </div>
   </div>

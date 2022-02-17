@@ -34,6 +34,11 @@
     }
     categories = categories;
   }
+
+  function deleteCategory(category) {
+    delete categories[category.id];
+    categories = categories;
+  }
 </script>
 
 <section>
@@ -79,7 +84,9 @@
 
   <div>
     {#each categoryArray as category (category.id)}
-      <Category {category} {categories} {show} />
+      <Category {category} {categories} {show}
+        on:delete={() => deleteCategory(category)}
+      />
     {/each}
   </div>
 </section>

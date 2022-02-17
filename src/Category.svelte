@@ -1,6 +1,9 @@
 <script>
+  import {createEventDispatcher} from 'svelte';
   import Item from './Item.svelte';
   import {getGuid, blurOnKey, sortOnName} from './util';
+
+  const dispatch = createEventDispatcher();
 
   export let categories;
   // { id: string, name: string, items: { [id string]: Item }}
@@ -42,6 +45,11 @@
       || (show === 'unpacked' && !item.packed)
     );
   }
+
+  function deleteItem(item) {
+    delete category.items[item.id];
+    category = category;
+  }
 </script>
 
 <div class="card mb-4">
@@ -64,7 +72,10 @@
         >{category.name}</span>
       {/if}
       <small class="text-muted">{status}</small>
-      <button class="btn btn-outline-danger btn-sm">Del</button>
+      <button
+        class="btn btn-outline-danger btn-sm"
+        on:click={() => dispatch('delete')}
+      >Del</button>
     </div>
   </div>
   <div class="card-body">
@@ -90,7 +101,10 @@
   </div>
   <ul class="list-group list-group-flush">
     {#each itemsToShow as item (item.id)}
-      <Item bind:item />
+      <Item
+        bind:item
+        on:delete={() => deleteItem(item)}
+      />
     {:else}
       <div>This category does not contain any items yet.</div>
     {/each}
