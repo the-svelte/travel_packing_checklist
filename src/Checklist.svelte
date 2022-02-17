@@ -1,6 +1,9 @@
 <script>
+  import {createEventDispatcher} from 'svelte';
   import Category from './Category.svelte';
   import {getGuid, sortOnName} from './util';
+
+  const dispatch = createEventDispatcher();
 
   let categories = {};
   let categoryArray = [];
@@ -42,6 +45,11 @@
 </script>
 
 <section>
+  <div>
+    <button class="btn btn-danger"
+      on:click={() => dispatch('logout')}
+    >Log Out</button>
+  </div>
   <header>
     <form class="my-3" on:submit|preventDefault={addCategory}>
       <div class="input-group mb-3">

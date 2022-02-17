@@ -1,6 +1,8 @@
 <script>
-import Login from './Login.svelte';
-import CheckList from './CheckList.svelte';
+  import Login from './Login.svelte';
+  import CheckList from './CheckList.svelte';
+
+  let page = Login;
 
 // const categories = {
 //   'xxx': {
@@ -33,7 +35,11 @@ import CheckList from './CheckList.svelte';
   </div>
   <div class="row justify-content-center">
     <div class="col-md-6 col-xl-3 pt-4">
-      <CheckList />
+      {#if page === Login}
+        <Login on:login={() => (page = CheckList)}/>
+      {:else}
+        <CheckList on:logout={() => (page = Login)} />
+      {/if}
     </div>
   </div>
 </section>
