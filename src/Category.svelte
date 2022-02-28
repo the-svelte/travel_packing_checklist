@@ -61,6 +61,7 @@
     <div class="d-flex justify-content-between align-items-center h6 mb-0">
       {#if editing}
         <form>
+          <!-- svelte-ignore a11y-autofocus -->
           <input
             type="text"
             class="form-control"
