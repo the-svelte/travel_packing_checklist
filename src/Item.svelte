@@ -23,7 +23,7 @@
     </div>
     <div class="flex-grow-1 px-4">
       {#if editing}
-        <!-- A11y: Avoid using autofocus -->
+        <!-- svelte-ignore a11y-autofocus -->
         <input
           autofocus
           type="text"
