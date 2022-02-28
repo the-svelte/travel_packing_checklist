@@ -42,6 +42,7 @@
     </div>
     <div class="">
       <button
+        data-testid="delete"
         type="button"
         class="btn btn-sm text-muted"
         on:click={() => dispatch('delete')}
