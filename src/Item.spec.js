@@ -17,4 +17,10 @@ describe('Item', () => {
     expect(getByText(item.name));
     expect(getByTestId('delete'));
   });
+
+  test('should match snapshot', () => {
+    const {container} = render(Item, {categoryId, dnd, item});
+
+    expect(container).toMatchSnapshot();
+  })
 });
